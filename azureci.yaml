@@ -1,0 +1,15 @@
+name: $(date:yyyymmdd)$(rev:.rr) #20191209.00
+
+trigger:
+  - master
+
+stages:
+  - stage: compile
+    jobs:
+      - job: aspnet
+        pool:
+          vmImage: ubuntu-1804
+        steps:
+          - script: |
+              dotner build 3_devops/Devops.sln
+ 

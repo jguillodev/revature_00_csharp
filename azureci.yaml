@@ -47,21 +47,21 @@ stages:
               dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
             env:
               SONAR_TOKEN: $(SONAR_LOGIN) 
-  # - stage: pack
-  #   jobs:
-  #     - job:
-  #       pool:
-  #         vmImage: ubuntu-18.04
-  #     steps:
-  #       - script: docker image build -f 3_devops/dockerfile -t joshuaguillory/devops:$BUILD_NAME
-  #       env:
-  #         BUILD_NAME: $(Build.DefinitionNAME)
-  #     - script: docker login --username $DOCKER_USER --password $DOCKER_TOKEN
-  #       env:
-  #         DOCKER_TOKEN: $(DOCKER_TOKEN)
-  #         DOCKER_USER: $(DOCKER_USER)
-  #     - script: docker image push joshuaguillory/devops:$(BUILD_NAME)
-  #         env:
-  #           BUILD_NAME: $(Build.Definition)
+  - stage: pack
+    jobs:
+      - job:
+        pool:
+          vmImage: ubuntu-18.04
+      steps:
+        - script: docker image build -f 3_devops/dockerfile -t joshuaguillory/devops:$BUILD_NAME .
+          env:
+            BUILD_NAME: $(Build.DefinitionName)
+      - script: docker login --username $DOCKER_USER --password $DOCKER_TOKEN
+        env:
+          DOCKER_TOKEN: $(DOCKER_TOKEN)
+          DOCKER_USER: $(DOCKER_USER)
+      - script: docker image push joshuaguillory/devops:$(BUILD_NAME)
+          env:
+            BUILD_NAME: $(Build.DefinitionName)
 
  

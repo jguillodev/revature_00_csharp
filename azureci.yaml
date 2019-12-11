@@ -19,20 +19,24 @@ stages:
           vmImage: ubuntu-18.04
         steps:
           - task: DotNetCoreCLI@2
-        inputs:
-          command: test
-          projects: 3_devops/Devops.sln
-          arguments: '--collect:"XPlat Code Coverage"'
-      - task: PublishCodeCoverageResults@1
-        inputs:
-          codeCoverageTool: cobertura
-          summaryFileLocation: '**/coverage.cobertura.xml'
+            inputs:
+              command: test
+              projects: 3_devops/Devops.sln
+              arguments: '--collect:"XPlat Code Coverage"'
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: cobertura
+              summaryFileLocation: '**/coverage.cobertura.xml'
   # - stage: analyze
   #   jobs:
   #     - job:
   #       pool:
   #         vmImage: ubuntu-18.04
   #       steps:
+            # - task: UseDotNet@2
+            #   inputs:
+            #     packageType: 'sdk'
+            #     version: '3.0.100'
   #       - script: dotnet tool install --global dotnet-sonarscanner
   #       - script: | 
   #           dotnet sonarscanner begin /k:devoops-jg1 /d:sonar.login=$SONAR_TOKEN /o:jguillodev
@@ -40,7 +44,7 @@ stages:
   #           dotnet test 3_devops/Devops.sln
   #           dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
   #         env:
-  #         SONAR_LOGIN: $(SONAR_LOGIN) 
+  # #         SONAR_LOGIN: $(SONAR_LOGIN) 
   # - stage: pack
   #   jobs:
   #     - job:

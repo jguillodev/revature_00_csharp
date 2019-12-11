@@ -25,7 +25,7 @@ stages:
               arguments: '--collect:"XPlat Code Coverage"'
           - task: PublishCodeCoverageResults@1
               inputs:
-                codecoverageTool: cobertura
+                codeCoverageTool: cobertura
                 summaryFileLocation: '**/coverage.cobertura.xml'
   - stage: analyze
     jobs:

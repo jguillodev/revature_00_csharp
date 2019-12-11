@@ -18,15 +18,15 @@ stages:
         pool:
           vmImage: ubuntu-18.04
         steps:
-      - task: DotNetCoreCLI@2
-    #     inputs:
-    #       command: test
-    #       projects: 3_devops/Devops.sln
-    #       arguments: '--collect:"XPlat Code Coverage"'
-    #   - task: PublishCodeCoverageResults@1
-    #     inputs:
-    #       codeCoverageTool: cobertura
-    #       summaryFileLocation: '**/coverage.cobertura.xml'
+          - task: DotNetCoreCLI@2
+        inputs:
+          command: test
+          projects: 3_devops/Devops.sln
+          arguments: '--collect:"XPlat Code Coverage"'
+      - task: PublishCodeCoverageResults@1
+        inputs:
+          codeCoverageTool: cobertura
+          summaryFileLocation: '**/coverage.cobertura.xml'
   # - stage: analyze
   #   jobs:
   #     - job:

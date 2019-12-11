@@ -13,12 +13,12 @@ stages:
           - script: |
               dotnet build 3_devops/Devops.sln
   - stage: test
-    # jobs:
-    #   - job: aspnet_test
-    #     pool:
-    #       vmImage: ubuntu-18.04
-    #     steps:
-    #   - task: DotNetCoreCLI@2
+    jobs:
+      - job: aspnet_test
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+      - task: DotNetCoreCLI@2
     #     inputs:
     #       command: test
     #       projects: 3_devops/Devops.sln

@@ -35,10 +35,10 @@ stages:
           steps:
             - script: dotnet tool install --global dotnet-sonarscanner
             - script: | 
-            dotnet sonarscanner begin /k:devoops-jg1 /d:sonar.login=$SONAR_TOKEN /o:jguillodev
-            dotnet build
-            dotnet test
-            dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
+                dotnet sonarscanner begin /k:devoops-jg1 /d:sonar.login=$SONAR_TOKEN /o:jguillodev
+                dotnet build 3_devops/Devops.sln
+                dotnet test 3_devops/Devops.sln
+                dotnet sonarscanner end /d:sonar.login=$SONAR_TOKEN
           env:
             SONAR_LOGIN: $(SONAR_LOGIN) 
   - stage: pack

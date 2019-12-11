@@ -61,7 +61,7 @@ stages:
               DOCKER_TOKEN: $(DOCKER_TOKEN)
               DOCKER_USER: $(DOCKER_USER)
           - script: docker image push joshuaguillory/devops:$(BUILD_NAME)
-              env:
-                BUILD_NAME: $(Build.DefinitionName)
+            env:
+              BUILD_NAME: $(Build.DefinitionName)
 
   

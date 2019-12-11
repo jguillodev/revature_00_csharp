@@ -60,7 +60,7 @@ stages:
             env:
               DOCKER_TOKEN: $(DOCKER_TOKEN)
               DOCKER_USER: $(DOCKER_USER)
-          - script: docker image push jguillodev/devops-demo:$(BUILD_NAME)
+          - script: docker image push jguillodev/devops-demo:$BUILD_NAME
             env:
               BUILD_NAME: $(Build.DefinitionName)
 
